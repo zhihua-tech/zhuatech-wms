@@ -11,8 +11,14 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class SlottingRecommendationService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Result recommend(Request request) {
         String zone = request.hazardous() ? "CONTROLLED"
             : request.unitWeightKg().compareTo(new BigDecimal("20")) > 0
@@ -32,11 +38,17 @@ public class SlottingRecommendationService {
         return new Result(request.skuCode(), zone, priority, estimatedTravelReduction, actions);
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(@NotBlank String skuCode, @Min(0) int dailyPickLines,
                           @DecimalMin("0.0001") BigDecimal unitCubeM3,
                           @DecimalMin("0.01") BigDecimal unitWeightKg,
                           @Min(0) int currentTravelMeters, boolean hazardous, boolean fragile) {}
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Result(String skuCode, String recommendedZone, int relocationPriority,
                          BigDecimal estimatedTravelReductionMeters, List<String> actions) {}
 }

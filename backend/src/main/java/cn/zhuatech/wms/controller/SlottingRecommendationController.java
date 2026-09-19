@@ -6,12 +6,21 @@ import cn.zhuatech.wms.service.SlottingRecommendationService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @RestController
 @RequestMapping("/api/wms/insights")
 public class SlottingRecommendationController {
     private final SlottingRecommendationService service;
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public SlottingRecommendationController(SlottingRecommendationService service) { this.service = service; }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @PostMapping("/slotting")
     public ApiResponse<SlottingRecommendationService.Result> recommend(
         @Valid @RequestBody SlottingRecommendationService.Request request) {

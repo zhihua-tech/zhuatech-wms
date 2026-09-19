@@ -8,8 +8,14 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class ReplenishmentPlanningService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Result plan(Request request) {
         int required = Math.max(0, request.safetyStock() + request.expectedDemand() - request.pickFaceQty());
         int replenishQty = Math.min(request.reserveQty(), required);
@@ -25,9 +31,15 @@ public class ReplenishmentPlanningService {
         return new Result(request.sku(), required, replenishQty, shortage, urgency, targetMinutes, actions);
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(@NotBlank String sku, @Min(0) int pickFaceQty,
                           @Min(0) int safetyStock, @Min(0) int expectedDemand,
                           @Min(0) int reserveQty, @Min(0) int leadMinutes) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Result(String sku, int requiredQty, int replenishQty, boolean shortage,
                          String urgency, int targetMinutes, List<String> actions) {}
 }

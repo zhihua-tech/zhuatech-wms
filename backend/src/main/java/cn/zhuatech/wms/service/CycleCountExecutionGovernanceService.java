@@ -2,8 +2,14 @@
 package cn.zhuatech.wms.service;
 import jakarta.validation.constraints.*; import org.springframework.stereotype.Service;
 import java.math.BigDecimal; import java.util.*;
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class CycleCountExecutionGovernanceService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Assessment assess(Request r) {
         List<String> blockers=new ArrayList<>(); List<String> actions=new ArrayList<>();
         if (!r.zoneFrozen()) blockers.add("盘点区域尚未冻结库存移动");
@@ -23,11 +29,23 @@ public class CycleCountExecutionGovernanceService {
         String route=risk==RiskLevel.HIGH?"仓库主管→库存控制→财务/质量":"仓库主管";
         return new Assessment(r.countNo(),decision,risk,route,List.copyOf(blockers),List.copyOf(actions));
     }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(@NotBlank String countNo,@NotBlank String counterId,@NotBlank String approverId,
         @NotNull @DecimalMin("0.00") BigDecimal varianceRate,@NotNull @DecimalMin("0.00") BigDecimal toleranceRate,
         boolean zoneFrozen,boolean blindCountEnabled,boolean lotSerialTraceComplete,boolean idempotencyKeyRegistered,
         boolean independentRecountCompleted,boolean varianceReasonConfirmed,boolean adjustmentApproved,
         boolean auditEvidenceAttached,boolean adjustmentPostingPlanned,boolean zoneUnfreezePlanned,boolean serialControlled){}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Assessment(String countNo,Decision decision,RiskLevel riskLevel,String approvalRoute,List<String> blockers,List<String> actions){}
-    public enum Decision{POST,REVIEW,BLOCKED} public enum RiskLevel{NORMAL,HIGH}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
+    public enum Decision{POST,REVIEW,BLOCKED} /**
+                                               * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+                                               */
+public enum RiskLevel{NORMAL,HIGH}
 }

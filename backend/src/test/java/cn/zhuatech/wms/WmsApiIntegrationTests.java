@@ -11,11 +11,17 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @SpringBootTest
 @AutoConfigureMockMvc
 class WmsApiIntegrationTests {
     @Autowired MockMvc mvc;
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void operatorCanReadAndUpdateWarehouseTasks() throws Exception {
         String token = login("operator", "Demo@2026", "OPERATOR");
         mvc.perform(get("/api/wms/tasks/mine").header("Authorization", "Bearer " + token))
@@ -27,6 +33,9 @@ class WmsApiIntegrationTests {
             .andExpect(status().isOk()).andExpect(jsonPath("$.data.completedQty").value(32));
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void supervisorCanReadManagementDashboard() throws Exception {
         String token = login("supervisor", "Demo@2026", "SUPERVISOR");
         mvc.perform(get("/api/wms/dashboard").header("Authorization", "Bearer " + token))
@@ -35,10 +44,16 @@ class WmsApiIntegrationTests {
             .andExpect(status().isOk()).andExpect(jsonPath("$.data[0].locationCode").isNotEmpty());
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void anonymousRequestIsRejected() throws Exception {
         mvc.perform(get("/api/wms/dashboard")).andExpect(status().isForbidden());
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void supervisorCanGenerateReplenishmentPlan() throws Exception {
         String token = login("supervisor", "Demo@2026", "SUPERVISOR");
         mvc.perform(post("/api/wms/replenishment-plan").header("Authorization", "Bearer " + token)
@@ -49,6 +64,9 @@ class WmsApiIntegrationTests {
             .andExpect(jsonPath("$.data.urgency").value("CRITICAL"));
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void supervisorCanCheckWaveReleaseReadiness() throws Exception {
         String token = login("supervisor", "Demo@2026", "SUPERVISOR");
         mvc.perform(post("/api/wms/wave-release-check").header("Authorization", "Bearer " + token)
@@ -60,6 +78,9 @@ class WmsApiIntegrationTests {
             .andExpect(jsonPath("$.data.releasable").value(false));
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     private String login(String username, String password, String role) throws Exception {
         String body = mvc.perform(post("/api/auth/login").contentType(MediaType.APPLICATION_JSON)
                 .content("{\"username\":\"" + username + "\",\"password\":\"" + password + "\"}"))

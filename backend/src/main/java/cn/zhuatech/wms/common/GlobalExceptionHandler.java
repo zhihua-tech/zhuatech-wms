@@ -6,14 +6,23 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @ExceptionHandler(BusinessException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     ApiResponse<Void> business(BusinessException exception) {
         return ApiResponse.fail(exception.getMessage());
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     ApiResponse<Void> validation(MethodArgumentNotValidException exception) {
@@ -21,6 +30,9 @@ public class GlobalExceptionHandler {
         return ApiResponse.fail(field == null ? "请求参数不正确" : field.getDefaultMessage());
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     ApiResponse<Void> unexpected(Exception exception) {

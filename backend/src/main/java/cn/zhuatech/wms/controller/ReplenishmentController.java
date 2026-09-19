@@ -10,21 +10,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @RestController
 @RequestMapping("/api/wms")
 public class ReplenishmentController {
     private final ReplenishmentPlanningService service;
     private final WaveReleaseService waveReleaseService;
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public ReplenishmentController(ReplenishmentPlanningService service, WaveReleaseService waveReleaseService) {
         this.service = service;
         this.waveReleaseService = waveReleaseService;
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @PostMapping("/replenishment-plan")
     public ApiResponse<ReplenishmentPlanningService.Result> plan(@Valid @RequestBody ReplenishmentPlanningService.Request request) {
         return ApiResponse.ok(service.plan(request));
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @PostMapping("/wave-release-check")
     public ApiResponse<WaveReleaseService.Result> checkWave(@Valid @RequestBody WaveReleaseService.Request request) {
         return ApiResponse.ok(waveReleaseService.check(request));

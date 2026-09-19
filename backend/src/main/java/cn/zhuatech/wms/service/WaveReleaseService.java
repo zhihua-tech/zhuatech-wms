@@ -11,8 +11,14 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class WaveReleaseService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Result check(Request request) {
         if (request.pickedPieces() > request.totalPieces()) throw new BusinessException("已拣件数不能超过波次总件数");
         BigDecimal completionRate = request.totalPieces() == 0 ? BigDecimal.ZERO
@@ -32,12 +38,18 @@ public class WaveReleaseService {
             decision, actions, "READY".equals(decision));
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(@NotBlank String waveNo,
                           @Min(0) int totalPieces,
                           @Min(0) int pickedPieces,
                           @Min(0) int exceptionTasks,
                           @Min(0) int minutesToCutoff,
                           boolean dockReady) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Result(String waveNo, BigDecimal completionRate, int remainingPieces,
                          String decision, List<String> actions, boolean releasable) {}
 }

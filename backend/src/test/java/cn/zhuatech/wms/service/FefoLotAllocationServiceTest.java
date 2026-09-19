@@ -8,9 +8,15 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 class FefoLotAllocationServiceTest {
     private final FefoLotAllocationService service = new FefoLotAllocationService();
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test
     void allocatesEarliestExpiringEligibleLotsFirst() {
         var result = service.allocate(request("12", 3, List.of(
@@ -22,6 +28,9 @@ class FefoLotAllocationServiceTest {
         assertThat(result.allocations().get(1).allocatedQuantity()).isEqualByComparingTo("4");
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test
     void excludesQuarantineAndInsufficientShelfLife() {
         var result = service.allocate(request("5", 3, List.of(
@@ -31,6 +40,9 @@ class FefoLotAllocationServiceTest {
         assertThat(result.rejectedLots()).hasSize(2);
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test
     void returnsPartialWhenSplitLimitPreventsFulfilment() {
         var result = service.allocate(request("12", 1, List.of(
@@ -41,6 +53,9 @@ class FefoLotAllocationServiceTest {
         assertThat(result.rejectedLots()).anyMatch(item -> item.reason().contains("最大拆分批次数"));
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test
     void blocksDuplicateLotIdentity() {
         var duplicate = lot("L1", "7", "0", 20, true, FefoLotAllocationService.LotStatus.AVAILABLE);
@@ -49,12 +64,18 @@ class FefoLotAllocationServiceTest {
         assertThat(result.rejectedLots().getFirst().reason()).isEqualTo("批次编号重复");
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     private FefoLotAllocationService.Request request(String quantity, int maxLots,
                                                        List<FefoLotAllocationService.Lot> lots) {
         return new FefoLotAllocationService.Request("ALLOC-1", "OWNER-1", "SKU-1",
                 new BigDecimal(quantity), 10, maxLots, lots);
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     private FefoLotAllocationService.Lot lot(String number, String onHand, String reserved,
                                               int days, boolean released,
                                               FefoLotAllocationService.LotStatus status) {

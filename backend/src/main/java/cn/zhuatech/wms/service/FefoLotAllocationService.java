@@ -16,9 +16,16 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/** 按货主、质量状态和最短保质期执行 FEFO 批次分配。 */
+/**
+ * 按货主、质量状态和最短保质期执行 FEFO 批次分配。
+ *
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class FefoLotAllocationService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Result allocate(Request request) {
         List<RejectedLot> rejected = new ArrayList<>();
         List<Lot> eligible = new ArrayList<>();
@@ -60,26 +67,47 @@ public class FefoLotAllocationService {
                 List.copyOf(allocations), List.copyOf(rejected));
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(@NotBlank String allocationNo, @NotBlank String ownerId,
                           @NotBlank String sku, @NotNull @DecimalMin("0.0001") BigDecimal requestedQuantity,
                           @Min(0) int minimumShelfLifeDays, @Min(1) int maximumSplitLots,
                           @NotEmpty List<@Valid Lot> lots) {}
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Lot(@NotBlank String lotNo, @NotBlank String ownerId,
                       @NotNull @DecimalMin("0.0") BigDecimal onHandQuantity,
                       @NotNull @DecimalMin("0.0") BigDecimal reservedQuantity,
                       @Min(0) int shelfLifeRemainingDays, boolean qaReleased,
                       @NotNull LotStatus status) {}
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record AllocationLine(String lotNo, BigDecimal allocatedQuantity,
                                  int shelfLifeRemainingDays) {}
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record RejectedLot(String lotNo, String reason) {}
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Result(String allocationNo, Decision decision, BigDecimal allocatedQuantity,
                          BigDecimal shortageQuantity, List<AllocationLine> allocations,
                          List<RejectedLot> rejectedLots) {}
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public enum LotStatus { AVAILABLE, HOLD, QUARANTINE, EXPIRED }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public enum Decision { ALLOCATED, PARTIAL, BLOCKED }
 }

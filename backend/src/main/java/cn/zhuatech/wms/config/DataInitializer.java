@@ -8,6 +8,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import java.time.*;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Component
 public class DataInitializer implements CommandLineRunner {
     private final UserRepository users;
@@ -17,12 +20,18 @@ public class DataInitializer implements CommandLineRunner {
     private final OutboundWaveRepository waves;
     private final WarehouseZoneRepository zones;
     private final PasswordEncoder encoder;
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public DataInitializer(UserRepository users, WarehouseTaskRepository tasks, InventoryBalanceRepository inventory,
                            InboundReceiptRepository inbounds, OutboundWaveRepository waves,
                            WarehouseZoneRepository zones, PasswordEncoder encoder) {
         this.users = users; this.tasks = tasks; this.inventory = inventory; this.inbounds = inbounds;
         this.waves = waves; this.zones = zones; this.encoder = encoder;
     }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Override public void run(String... args) {
         if (users.count() > 0) return;
         users.save(new UserAccount("admin", encoder.encode("ZhuaTech@2026"), "系统管理员", UserAccount.Role.ADMIN, "全部仓库"));

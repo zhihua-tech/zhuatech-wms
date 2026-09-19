@@ -8,9 +8,15 @@ import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 class SlottingRecommendationServiceTests {
     private final SlottingRecommendationService service = new SlottingRecommendationService();
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void recommendsFastPickForHighVelocitySku() {
         var result = service.recommend(new SlottingRecommendationService.Request("SKU-A01", 82,
             new BigDecimal("0.015"), new BigDecimal("3.2"), 120, false, false));
@@ -18,6 +24,9 @@ class SlottingRecommendationServiceTests {
         assertThat(result.estimatedTravelReductionMeters()).isEqualByComparingTo("54.0");
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void hazardousRuleOverridesVelocity() {
         var result = service.recommend(new SlottingRecommendationService.Request("SKU-H01", 95,
             new BigDecimal("0.02"), new BigDecimal("5"), 60, true, false));

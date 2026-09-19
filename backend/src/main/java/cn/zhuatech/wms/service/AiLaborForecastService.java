@@ -11,11 +11,20 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class AiLaborForecastService {
     private final OpenAiCompatibleGateway gateway;
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public AiLaborForecastService(OpenAiCompatibleGateway gateway) { this.gateway = gateway; }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Result forecast(Request request) {
         BigDecimal manualFactor = BigDecimal.ONE.subtract(request.automationRate().divide(BigDecimal.valueOf(100), 4, RoundingMode.HALF_UP));
         BigDecimal pickSeconds = BigDecimal.valueOf(request.orderLines()).multiply(request.averagePickSeconds()).multiply(manualFactor);
@@ -39,10 +48,16 @@ public class AiLaborForecastService {
             enhanced.isPresent() ? "EXTERNAL_MODEL" : "LOCAL_RULES", metadata.provider(), metadata.model());
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(@Min(1) int orders, @Min(1) int orderLines, @Min(0) int units,
                           @Min(0) int urgentOrders, @DecimalMin("1") BigDecimal averagePickSeconds,
                           @Min(0) int availableWorkers, @Min(1) int shiftMinutes,
                           @DecimalMin("0") @DecimalMax("100") BigDecimal automationRate) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Result(BigDecimal requiredLaborHours, int requiredWorkers, int workerGap, String status,
                          String recommendation, List<String> actions, String aiMode, String provider, String model) {}
 }

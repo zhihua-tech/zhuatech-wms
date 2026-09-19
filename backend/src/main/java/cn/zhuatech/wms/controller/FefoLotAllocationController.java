@@ -9,15 +9,24 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @RestController
 @RequestMapping("/api/enterprise/wms")
 public class FefoLotAllocationController {
     private final FefoLotAllocationService service;
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public FefoLotAllocationController(FefoLotAllocationService service) {
         this.service = service;
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @PostMapping("/fefo-lot-allocation")
     public ApiResponse<FefoLotAllocationService.Result> allocate(
             @Valid @RequestBody FefoLotAllocationService.Request request) {

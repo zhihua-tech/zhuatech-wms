@@ -11,8 +11,14 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class CycleCountPlannerService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Result plan(Request request) {
         int score = switch (request.abcClass()) { case "A" -> 30; case "B" -> 18; default -> 8; };
         score += Math.min(30, request.varianceRatePercent() * 3);
@@ -31,10 +37,16 @@ public class CycleCountPlannerService {
         return new Result(request.skuCode(), score, priority, dueInDays, actions);
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(@NotBlank String skuCode,
                           @Pattern(regexp = "A|B|C") String abcClass,
                           @Min(0) @Max(100) int varianceRatePercent,
                           @Min(0) int dailyMovements, @Min(0) int daysSinceLastCount,
                           @DecimalMin("0") BigDecimal stockValue) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Result(String skuCode, int riskScore, String priority, int dueInDays, List<String> actions) {}
 }

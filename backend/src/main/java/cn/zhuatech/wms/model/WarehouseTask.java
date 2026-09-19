@@ -4,14 +4,26 @@ package cn.zhuatech.wms.model;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Entity
 @Table(name = "wms_task", indexes = {
     @Index(name = "idx_wms_task_status", columnList = "status"),
     @Index(name = "idx_wms_task_assignee", columnList = "assignee")
 })
 public class WarehouseTask extends BaseEntity {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public enum Type { RECEIVING, PUTAWAY, PICKING, REPLENISHMENT, COUNTING, PACKING }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public enum Status { WAITING, IN_PROGRESS, EXCEPTION, COMPLETED }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public enum Priority { NORMAL, HIGH, URGENT }
 
     @Column(nullable = false, unique = true, length = 32) private String taskNo;
@@ -33,7 +45,13 @@ public class WarehouseTask extends BaseEntity {
     private LocalDateTime completedAt;
     @Column(length = 200) private String remark;
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     protected WarehouseTask() {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public WarehouseTask(String taskNo, Type type, Status status, Priority priority, String warehouseName,
                          String zoneCode, String sourceLocation, String targetLocation, String skuCode,
                          String productName, String batchNo, Integer plannedQty, Integer completedQty,
@@ -46,6 +64,9 @@ public class WarehouseTask extends BaseEntity {
         if (status == Status.IN_PROGRESS) this.startedAt = LocalDateTime.now().minusMinutes(18);
         if (status == Status.COMPLETED) this.completedAt = LocalDateTime.now().minusMinutes(9);
     }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public void update(Status status, Integer completedQty, String assignee, String remark) {
         if (status == Status.IN_PROGRESS && startedAt == null) startedAt = LocalDateTime.now();
         if (status == Status.COMPLETED) completedAt = LocalDateTime.now();
@@ -54,22 +75,76 @@ public class WarehouseTask extends BaseEntity {
         if (assignee != null && !assignee.isBlank()) this.assignee = assignee;
         if (remark != null) this.remark = remark;
     }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public String getTaskNo() { return taskNo; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Type getType() { return type; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Status getStatus() { return status; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Priority getPriority() { return priority; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public String getWarehouseName() { return warehouseName; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public String getZoneCode() { return zoneCode; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public String getSourceLocation() { return sourceLocation; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public String getTargetLocation() { return targetLocation; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public String getSkuCode() { return skuCode; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public String getProductName() { return productName; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public String getBatchNo() { return batchNo; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Integer getPlannedQty() { return plannedQty; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Integer getCompletedQty() { return completedQty; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public String getAssignee() { return assignee; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public LocalDateTime getDueAt() { return dueAt; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public LocalDateTime getStartedAt() { return startedAt; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public LocalDateTime getCompletedAt() { return completedAt; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public String getRemark() { return remark; }
 }

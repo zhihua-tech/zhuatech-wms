@@ -4,9 +4,15 @@ package cn.zhuatech.wms.service;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 class ShipmentReleaseGovernanceServiceTest {
     private final ShipmentReleaseGovernanceService service = new ShipmentReleaseGovernanceService();
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void releasesReadyShipment() {
         var result = service.assess(new ShipmentReleaseGovernanceService.Request(
                 "SHP-001", true, true, true, true, false, false, false, false, 0, 120));
@@ -14,6 +20,9 @@ class ShipmentReleaseGovernanceServiceTest {
         assertThat(result.blockers()).isEmpty();
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void holdsUnsafeControlledShipment() {
         var result = service.assess(new ShipmentReleaseGovernanceService.Request(
                 "SHP-002", false, false, false, false, true, false, true, false, 2, 10));

@@ -9,12 +9,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @RestController
 @RequestMapping("/api/enterprise/wms")
 public class ShipmentReleaseGovernanceController {
     private final ShipmentReleaseGovernanceService service;
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public ShipmentReleaseGovernanceController(ShipmentReleaseGovernanceService service) { this.service = service; }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @PostMapping("/shipment-release")
     public ApiResponse<ShipmentReleaseGovernanceService.Assessment> assess(
             @Valid @RequestBody ShipmentReleaseGovernanceService.Request request) {

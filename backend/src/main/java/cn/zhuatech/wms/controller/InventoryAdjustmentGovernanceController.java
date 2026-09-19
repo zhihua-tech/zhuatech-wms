@@ -6,12 +6,21 @@ import cn.zhuatech.wms.service.InventoryAdjustmentGovernanceService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @RestController
 @RequestMapping("/api/enterprise/wms")
 public class InventoryAdjustmentGovernanceController {
     private final InventoryAdjustmentGovernanceService service;
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public InventoryAdjustmentGovernanceController(InventoryAdjustmentGovernanceService service) { this.service = service; }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @PostMapping("/inventory-adjustment")
     public ApiResponse<InventoryAdjustmentGovernanceService.Assessment> assess(
             @Valid @RequestBody InventoryAdjustmentGovernanceService.Request request) {

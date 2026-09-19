@@ -10,6 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.*;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class WmsService {
     private final WarehouseTaskRepository tasks;
@@ -19,6 +22,9 @@ public class WmsService {
     private final WarehouseZoneRepository zones;
     private final CurrentUserService currentUser;
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public WmsService(WarehouseTaskRepository tasks, InventoryBalanceRepository inventory,
                       InboundReceiptRepository inbounds, OutboundWaveRepository waves,
                       WarehouseZoneRepository zones, CurrentUserService currentUser) {
@@ -26,6 +32,9 @@ public class WmsService {
         this.waves = waves; this.zones = zones; this.currentUser = currentUser;
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Transactional(readOnly = true)
     public DashboardView dashboard() {
         int inboundQty = inbounds.findAll().stream().mapToInt(InboundReceipt::getReceivedQty).sum();
@@ -48,11 +57,17 @@ public class WmsService {
         return new DashboardView(stats, throughput, warnings);
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Transactional(readOnly = true)
     public List<WarehouseTask> myTasks() {
         return tasks.findByAssigneeOrderByDueAtAsc(currentUser.get().getFullName());
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Transactional
     public WarehouseTask updateTask(Long id, TaskUpdateRequest request) {
         WarehouseTask task = tasks.findById(id).orElseThrow(() -> new BusinessException("仓内任务不存在"));
@@ -64,6 +79,9 @@ public class WmsService {
         }
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Transactional
     public WarehouseTask createTask(TaskCreateRequest request) {
         try {
