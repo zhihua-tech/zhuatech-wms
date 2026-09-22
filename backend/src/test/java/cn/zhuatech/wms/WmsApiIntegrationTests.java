@@ -48,7 +48,7 @@ class WmsApiIntegrationTests {
      * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
      */
     @Test void anonymousRequestIsRejected() throws Exception {
-        mvc.perform(get("/api/wms/dashboard")).andExpect(status().isForbidden());
+        mvc.perform(get("/api/wms/dashboard")).andExpect(status().isUnauthorized());
     }
 
     /**
