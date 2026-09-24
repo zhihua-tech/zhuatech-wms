@@ -1,5 +1,9 @@
 # ZhuaTech WMS｜知华科技仓储管理系统社区源码版
 
+## 企业级增强：出库波次编排
+
+新增按优先级、承运商截单时间、温区、危化属性和仓内容量的确定性选单，详见[企业级出库波次编排](docs/ENTERPRISE_OUTBOUND_WAVE_PLANNING.md)。
+
 ## 企业级增强：循环盘点执行治理
 
 新增冻结盲盘、批次序列追溯、超差复盘、职责分离、幂等过账、证据和解冻闭环，详见[循环盘点执行治理](docs/ENTERPRISE_CYCLE_COUNT_EXECUTION.md)。
