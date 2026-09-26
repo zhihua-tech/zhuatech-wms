@@ -210,3 +210,7 @@ Copyright © 2026 上海如静知华信息科技有限公司（Shanghai Rujing Z
 ## FEFO 批次与保质期分配
 
 新增 `POST /api/enterprise/wms/fefo-lot-allocation`，按货主、质量放行状态、批次状态、剩余保质期、可用库存和最大拆批数进行 FEFO 分配。接口自动优先临期合格批次，排除冻结、隔离、过期、跨货主和保质期不足库存，并返回逐批分配量、缺口及拒绝原因，可直接服务食品、医药和批次管控仓库的出库预分配。
+
+## 月台预约与运力治理
+
+新增 `POST /api/enterprise/wms/dock-appointment`，根据托盘量和月台吞吐率计算作业时长，并统一检查时段容量、承运商、单证、危险品、冷链与入园安保。详见 [月台预约与运力治理](docs/ENTERPRISE_DOCK_APPOINTMENT.md)。
