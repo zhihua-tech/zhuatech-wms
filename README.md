@@ -1,5 +1,7 @@
 # ZhuaTech WMS｜知华科技仓储管理系统社区源码版
 
+[简体中文](README.md) | [English](README.en.md)
+
 ## 企业级增强：出库波次编排
 
 新增按优先级、承运商截单时间、温区、危化属性和仓内容量的确定性选单，详见[企业级出库波次编排](docs/ENTERPRISE_OUTBOUND_WAVE_PLANNING.md)。
