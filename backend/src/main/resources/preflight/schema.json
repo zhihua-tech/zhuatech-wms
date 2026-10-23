@@ -1,0 +1,82 @@
+{
+  "slug": "wms",
+  "title": "库存预留与批次效期预检",
+  "fields": [
+    {
+      "key": "sku",
+      "label": "SKU",
+      "type": "ID",
+      "length": 200
+    },
+    {
+      "key": "bin",
+      "label": "库位",
+      "type": "ID",
+      "length": 200
+    },
+    {
+      "key": "lot",
+      "label": "批次",
+      "type": "ID",
+      "length": 200
+    },
+    {
+      "key": "on_hand",
+      "label": "在库数量",
+      "type": "DECIMAL",
+      "length": 200,
+      "scale": 2
+    },
+    {
+      "key": "reserved",
+      "label": "预留数量",
+      "type": "DECIMAL",
+      "length": 200,
+      "scale": 2
+    },
+    {
+      "key": "expiry_date",
+      "label": "有效期",
+      "type": "DATE",
+      "length": 200
+    }
+  ],
+  "unique": [
+    [
+      "sku",
+      "bin",
+      "lot"
+    ]
+  ],
+  "rules": [
+    {
+      "op": "LE",
+      "args": [
+        "reserved",
+        "on_hand"
+      ],
+      "code": "RESERVE_EXCEEDS_STOCK",
+      "message": "预留数量不能超过在库数量",
+      "bad": {
+        "reserved": "101"
+      }
+    },
+    {
+      "op": "EXPIRY",
+      "args": [
+        "expiry_date"
+      ],
+      "code": "EXPIRY",
+      "message": "效期提醒",
+      "bad": null
+    }
+  ],
+  "sampleCsv": "sku,bin,lot,on_hand,reserved,expiry_date\nSKU-001,A-01,LOT-01,100,20,2027-12-31\n",
+  "limits": {
+    "rows": 500,
+    "bytes": 262144,
+    "columns": 32,
+    "cellCharacters": 4000
+  },
+  "scope": "Read-only batch validation; no persistence, reference-master lookup or full production certification."
+}
