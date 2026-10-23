@@ -1,0 +1,53 @@
+[
+  {
+    "patch": {},
+    "expected": {
+      "decision": "PASS",
+      "requiredVolume": "#3.6",
+      "requiredWeight": "#1800"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "pallets": "4"
+    },
+    "expected": {
+      "decision": "HOLD",
+      "volumeShortfall": "#0.8",
+      "weightShortfall": "#400"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "remainingWeight": "1799"
+    },
+    "expected": {
+      "decision": "HOLD",
+      "weightShortfall": "#1"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "remainingVolume": "3.6",
+      "remainingWeight": "1800"
+    },
+    "expected": {
+      "decision": "PASS"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "pallets": "0"
+    },
+    "expected": {
+      "decision": "REVIEW"
+    },
+    "error": false
+  }
+  ,{"patch":{"volumePerPallet":"0"},"expected":{},"error":true}
+  ,{"patch":{"weightPerPallet":"0"},"expected":{},"error":true}
+]

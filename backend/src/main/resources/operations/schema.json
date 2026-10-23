@@ -1,0 +1,88 @@
+{
+  "slug": "wms",
+  "title": "整托上架体积与承重双限核对",
+  "fields": [
+    {
+      "key": "id",
+      "label": "记录编号",
+      "type": "ID"
+    },
+    {
+      "key": "pallets",
+      "label": "待上架托盘数",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "0",
+      "max": "1000000"
+    },
+    {
+      "key": "volumePerPallet",
+      "label": "单托体积m³",
+      "type": "NUMBER",
+      "scale": 6,
+      "min": "0",
+      "max": "1000000000000"
+    },
+    {
+      "key": "weightPerPallet",
+      "label": "单托重量kg",
+      "type": "NUMBER",
+      "scale": 6,
+      "min": "0",
+      "max": "1000000000000"
+    },
+    {
+      "key": "remainingVolume",
+      "label": "剩余可用容积m³",
+      "type": "NUMBER",
+      "scale": 6,
+      "min": "0",
+      "max": "1000000000000"
+    },
+    {
+      "key": "remainingWeight",
+      "label": "剩余承重kg",
+      "type": "NUMBER",
+      "scale": 6,
+      "min": "0",
+      "max": "1000000000000"
+    }
+  ],
+  "columns": [
+    {
+      "key": "requiredVolume",
+      "label": "需求容积m³"
+    },
+    {
+      "key": "requiredWeight",
+      "label": "需求承重kg"
+    },
+    {
+      "key": "volumeShortfall",
+      "label": "容积缺口m³"
+    },
+    {
+      "key": "weightShortfall",
+      "label": "承重缺口kg"
+    }
+  ],
+  "description": "以整托数量及单托体积、重量核对库位剩余容积和承重，逐项输出缺口；不自动分配库位或控制设备。",
+  "owner": "上海如静知华信息科技有限公司",
+  "website": "https://www.zhuatech.cn/",
+  "authorization": "商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。",
+  "version": 1,
+  "notes": "输入均须为已获授权的同口径数据。金额固定人民币元；比例为百分数。核算结果只用于复核，未审批、未写库、未发起外部调用，也未触发付款、签名、资料销毁或设备控制。建议不构成法律、安全、会计或碳核证结论。",
+  "sample": {
+    "asOf": "2026-10-23",
+    "records": [
+      {
+        "id": "ITEM-001",
+        "pallets": "3",
+        "volumePerPallet": "1.2",
+        "weightPerPallet": "600",
+        "remainingVolume": "4",
+        "remainingWeight": "2000"
+      }
+    ]
+  }
+}
